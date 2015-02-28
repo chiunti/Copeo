@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageView"
+        android:src="@drawable/ic_launcher"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/namelabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/namelabel"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/namelabel"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/descriptionlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namelabel"
+        android:text="@string/descriptionlabel"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/descriptionlabel"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/latitudelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descriptionlabel"
+        android:text="@string/latitudelabel"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/latitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_toRightOf="@+id/latitudelabel"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/longitudelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/latitudelabel"
+        android:text="@string/longitudelabel"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/longitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/latitude"
+        android:layout_toRightOf="@+id/longitudelabel"
+        android:layout_marginLeft="10dp" />
+
+
+</RelativeLayout>
