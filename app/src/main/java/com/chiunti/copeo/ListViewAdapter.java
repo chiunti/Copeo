@@ -66,6 +66,7 @@ public class ListViewAdapter extends BaseAdapter {
             holder.latitude = (TextView) view.findViewById(R.id.latitude);
             holder.longitude = (TextView) view.findViewById(R.id.longitude);
 
+
             //holder.population = (TextView) view.findViewById(R.id.population);
             view.setTag(holder);
         } else {
@@ -92,6 +93,10 @@ public class ListViewAdapter extends BaseAdapter {
                 intent.putExtra("latitude",(lugareslist.get(position).getLatitude()));
                 // Pass all data longitude
                 intent.putExtra("longitude",(lugareslist.get(position).getLongitude()));
+
+                // Pass all data imagen
+                intent.putExtra("image",(lugareslist.get(position).getImage()));
+
                 // Start SingleItemView Class
                 mContext.startActivity(intent);
             }

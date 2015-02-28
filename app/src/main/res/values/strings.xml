@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="namelabel">Lugar</string>
-    <string name="descriptionlabel">Descripcion</string>
+    <string name="descriptionlabel">Descripción</string>
     <string name="latitudelabel">Latitud</string>
     <string name="longitudelabel">Longitud</string>
 

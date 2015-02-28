@@ -1,6 +1,7 @@
 package com.chiunti.copeo;
 
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,13 +12,17 @@ import android.view.MenuItem;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.view.View;
 import android.widget.ListView;
 
 
@@ -37,43 +42,10 @@ public class Copeo extends ActionBarActivity {
         setContentView(R.layout.activity_copeo);
         // Execute RemoteDataTask AsyncTask
         new RemoteDataTask().execute();
+    }
 
-
-        /*
-        // Enable Local Datastore.
-        Parse.enableLocalDatastore(this);
-        //Parse.initialize(this, "h9CbWMKOVPCR0QklWX6pfanGFx0NWpmfUwdAZbhb", "UjfbJ5NZ87IMrvR3NW5Gipg2ohu5ul6dIOgPFWXf");
-        Parse.initialize(this, "8h9rGBxp2yelNGDjr6fiemfVoP1HcbRIV3Zer81u", "B2oDwKIJsAL42kuUURK0v2qURpa2EmTPh3qKHDnU");
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_copeo);
-
-        ListViewAdapter adapter;
-
-
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("lugares");
-        //query.whereEqualTo("playerName", "Dan Stemkoski");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            public void done(List<ParseObject> scoreList, ParseException e) {
-                if (e == null) {
-                    Log.d("score", "Retrieved " + scoreList.size() + " scores");
-                    //for(int i = 0; i < scoreList.size(); i++){
-                    for (ParseObject obj:scoreList){
-                        //ParseObject obj = (ParseObject) scoreList.get(i);
-
-                        Log.i("DEBUG ",  "Lugar : " + obj.get("name") +
-                                         " descripcion : " + obj.get("description") +
-                                         " Lat : " + ((ParseGeoPoint)obj.get("position")).getLatitude() +
-                                         " Long : " + ((ParseGeoPoint)obj.get("position")).getLongitude() );
-                    }
-
-                } else {
-                    Log.d("score", "Error: " + e.getMessage());
-                }
-            }
-        });
-        */
-
+    public void onClickRefresh(View v){
+        new RemoteDataTask().execute();
     }
 
 
@@ -108,9 +80,9 @@ public class Copeo extends ActionBarActivity {
             // Create a progressdialog
             mProgressDialog = new ProgressDialog(Copeo.this);
             // Set progressdialog title
-            mProgressDialog.setTitle("Parse.com Custom ListView Tutorial");
+            mProgressDialog.setTitle("Lugares de copeo");
             // Set progressdialog message
-            mProgressDialog.setMessage("Loading...");
+            mProgressDialog.setMessage("Cargando...");
             mProgressDialog.setIndeterminate(false);
             // Show progressdialog
             mProgressDialog.show();
@@ -128,13 +100,16 @@ public class Copeo extends ActionBarActivity {
                 // query.orderByAscending("ranknum");
                 ob = query.find();
                 for (ParseObject lugar : ob) {
-                    lugares map = new lugares();
-                    map.setName((String) lugar.get("name"));
-                    map.setDescription((String) lugar.get("description"));
-                    map.setLatitude ( Double.toString( ((ParseGeoPoint)lugar.get("position")).getLatitude() )  );
-                    map.setLongitude( Double.toString( ((ParseGeoPoint)lugar.get("position")).getLongitude())  );
+                    lugares recLugar = new lugares();
+                    ParseFile photo = lugar.getParseFile("photo");
 
-                    lugaresList.add(map);
+                    recLugar.setName((String) lugar.get("name"));
+                    recLugar.setDescription((String) lugar.get("description"));
+                    recLugar.setLatitude(Double.toString(((ParseGeoPoint) lugar.get("position")).getLatitude()));
+                    recLugar.setLongitude(Double.toString(((ParseGeoPoint) lugar.get("position")).getLongitude()));
+                    recLugar.setImage(photo.getData());
+
+                    lugaresList.add(recLugar);
                 }
             } catch (ParseException e) {
                 Log.e("Error", e.getMessage());
