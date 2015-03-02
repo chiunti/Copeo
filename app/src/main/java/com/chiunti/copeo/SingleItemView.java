@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class SingleItemView extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Log.i("info","Single Item View");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.singleitemview);
         // Retrieve data from MainActivity on item click event
@@ -53,10 +55,15 @@ public class SingleItemView extends Activity {
         imgPhoto       = (ImageView) findViewById(R.id.imagePhoto);
 
         // Load the results into the TextViews
-        txtname.setText(name);
-        txtdescription.setText(description);
-        txtlatitude.setText(latitude);
-        txtlongitude.setText(longitude);
-        imgPhoto.setImageDrawable(Drawable.createFromStream(new ByteArrayInputStream(image),name));
+        try {
+            txtname.setText(name);
+            txtdescription.setText(description);
+            txtlatitude.setText(latitude);
+            txtlongitude.setText(longitude);
+            imgPhoto.setImageDrawable(Drawable.createFromStream(new ByteArrayInputStream(image), name));
+        } catch (Exception e){
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
