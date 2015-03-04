@@ -7,7 +7,7 @@
     android:paddingTop="5dp"
     android:paddingRight="10dp"
     android:paddingBottom="5dp"
-    android:background="#ffc2fff1">
+    android:background="@drawable/abc_menu_hardkey_panel_mtrl_mult">
 
     <ImageView
         android:layout_width="40dp"
@@ -27,14 +27,16 @@
             android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:text="nombre" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
-            android:textSize="17dp" />
+            android:textSize="17dp"
+            android:text="descripcion" />
     </RelativeLayout>
 
 

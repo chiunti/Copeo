@@ -103,6 +103,8 @@ public class ListViewAdapter extends BaseAdapter {
                 // Pass all data imagen
                 intent.putExtra("image",(lugareslist.get(position).getImage()));
 
+
+
                 Log.i("info", "onClick antes del start activity");
                 // Start SingleItemView Class
                 mContext.startActivity(intent);

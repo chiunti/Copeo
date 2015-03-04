@@ -41,9 +41,9 @@ public class SingleItemView extends Activity {
         // Get the results of description
         description = i.getStringExtra("description");
         // Get the results of latitude
-        latitude = i.getStringExtra("latitude");
+        latitude = String.valueOf(i.getDoubleExtra("latitude",0));
         // Get the results of longitude
-        longitude = i.getStringExtra("longitude");
+        longitude = String.valueOf(i.getDoubleExtra("longitude",0));
         // Get the results of image
         image = i.getByteArrayExtra("image");
 

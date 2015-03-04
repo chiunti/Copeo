@@ -9,7 +9,18 @@ import com.parse.ParseUser;
 
 import android.app.Application;
 
+import java.util.List;
+
 public class ParseApplication extends Application {
+    private List<lugares> lugaresList = null;
+
+    public List<lugares> getLugaresList() {
+        return lugaresList;
+    }
+
+    public void setLugaresList(List<lugares> lugaresList) {
+        this.lugaresList = lugaresList;
+    }
 
     @Override
     public void onCreate() {

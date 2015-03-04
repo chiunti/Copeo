@@ -9,5 +9,11 @@
     <string name="descriptionlabel">Descripción</string>
     <string name="latitudelabel">Latitud</string>
     <string name="longitudelabel">Longitud</string>
+    <string name="title_activity_copeo_home">Copeo</string>
+
+
+    <string name="title_section1">Lista</string>
+    <string name="title_section2">Mapa</string>
+    <string name="title_activity_maps">Mapa</string>
 
 </resources>
